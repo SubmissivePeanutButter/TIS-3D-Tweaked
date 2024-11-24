@@ -53,4 +53,13 @@ public final class CommonConfig {
     @Comment("The maximum number of infrared packets that can be stored in the receiver's buffer.")
     @Translation("maxQueueLength")
     public static int maxInfraredQueueLength = 16;
+
+     /**
+     * A multiplyer for how many instructions are run per tick.
+     */
+    @Path("controller") @Min(1) @Max(64)
+    @Comment("The computer speed multiplyer.")
+    @Translation("speedMultiplyer")
+    public static int computerSpeedMultiplyer = 16;
+}
 }

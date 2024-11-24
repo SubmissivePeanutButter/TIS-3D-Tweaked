@@ -347,21 +347,23 @@ public final class ControllerBlockEntity extends ComputerBlockEntity {
                 casings.forEach(CasingBlockEntity::stepRedstone);
 
                 try {
+                    
                     // 0 = off, we never have this or we'd be in the READY state.
                     // 1 = paused, i.e. we don't lose state, but don't step.
                     // [2-14] = step every 15-n-th step.
                     // 15 = step every tick.
                     // [16-75] = step n/15 times a tick.
                     // 75 = step 5 times a tick.
-                    if (power < 15) {
+                    final int stepsPerSecond = CommonConfig.maxCasingsPerController * power;
+                    if (stepsPerSecond < 15) {
                         // Stepping slower than 100%.
-                        final int delay = 15 - power;
+                        final int delay = 15 - stepsPerSecond;
                         if (level.getGameTime() % delay == 0 || forceStep) {
                             step();
                         }
                     } else {
                         // Stepping faster than 100%.
-                        final int steps = power / 15;
+                        final int steps = stepsPerSecond / 15;
                         for (int step = 0; step < steps; step++) {
                             step();
                         }

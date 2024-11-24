@@ -354,7 +354,7 @@ public final class ControllerBlockEntity extends ComputerBlockEntity {
                     // 15 = step every tick.
                     // [16-75] = step n/15 times a tick.
                     // 75 = step 5 times a tick.
-                    final int stepsPerSecond = CommonConfig.maxCasingsPerController * power;
+                    final int stepsPerSecond = CommonConfig.computerSpeedMultiplyer * power;
                     if (stepsPerSecond < 15) {
                         // Stepping slower than 100%.
                         final int delay = 15 - stepsPerSecond;

@@ -62,4 +62,3 @@ public final class CommonConfig {
     @Translation("speedMultiplyer")
     public static int computerSpeedMultiplyer = 16;
 }
-}
